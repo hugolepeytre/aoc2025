@@ -1,0 +1,17 @@
+[package]
+name = "aoc2024"
+version = "0.1.0"
+authors = ["Hugo <hugo.lepeytre@gmail.com>"]
+edition = "2021"
+
+# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+[dependencies]
+itertools = "0.13.0"
+regex = "1.11.1"
+num = "0.4.3"
+rayon = "1.10.0"
+
+[lints.clippy]
+pedantic = {level = "warn", priority = 0}
+map_unwrap_or = {level = "allow", priority = 1}
