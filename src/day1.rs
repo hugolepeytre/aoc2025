@@ -1,11 +1,7 @@
-use crate::utils::parse_numbers;
+use crate::utils::parse_numbers_no_split;
 
 pub fn part1(input: &str) {
-    let parsed_integers: Vec<i32> = parse_numbers::<i32>(&input.replace('L', "-"))
-        .iter()
-        .flatten()
-        .copied()
-        .collect();
+    let parsed_integers: Vec<i32> = parse_numbers_no_split::<i32>(&input.replace('L', "-"));
     let (z_count, final_value) = parsed_integers
         .iter()
         .fold((0, 50), |(z_count, val), instr| {
@@ -16,11 +12,7 @@ pub fn part1(input: &str) {
 }
 
 pub fn part2(input: &str) {
-    let parsed_integers: Vec<i32> = parse_numbers::<i32>(&input.replace('L', "-"))
-        .iter()
-        .flatten()
-        .copied()
-        .collect();
+    let parsed_integers: Vec<i32> = parse_numbers_no_split::<i32>(&input.replace('L', "-"));
     let (z_count, _) = parsed_integers
         .iter()
         .fold((0, 50), |(z_count, prev_click_val), &instr| {
