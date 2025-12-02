@@ -1,7 +1,3 @@
-use std::collections::HashMap;
-
-use num::Integer;
-
 use crate::utils::parse_numbers;
 
 pub fn part1(input: &str) {
