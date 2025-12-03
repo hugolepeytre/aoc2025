@@ -49,6 +49,23 @@ where
         .collect()
 }
 
+pub fn parse_digits<T: std::str::FromStr>(s: &str) -> Vec<Vec<T>>
+where
+    T::Err: std::fmt::Debug,
+{
+    let re = Regex::new(r"-?\d").unwrap();
+
+    s.trim_end()
+        .split('\n')
+        .map(|l| {
+            re.captures_iter(l)
+                .map(|c| c.extract::<0>())
+                .map(|(re_match, _)| re_match.parse::<T>().unwrap())
+                .collect()
+        })
+        .collect()
+}
+
 pub fn parse_lists_numbers<T: std::str::FromStr>(s: Vec<&str>) -> Vec<Vec<T>>
 where
     T::Err: std::fmt::Debug,
