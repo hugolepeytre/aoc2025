@@ -26,6 +26,7 @@ impl<T: Copy + Eq> Grid<T> {
         grid
     }
 
+    /// Make a move in a given direction, returns None if out of bounds
     pub fn mvt(&self, pos: Complex<i32>, mvt: Complex<i32>) -> Option<Complex<i32>> {
         let new_pos = pos + mvt;
         if self.inbounds(new_pos) {
@@ -35,10 +36,12 @@ impl<T: Copy + Eq> Grid<T> {
         }
     }
 
+    /// Get the element at a given position (complex number, use `idx_to_pos` if needed)
     pub fn get(&self, pos: Complex<i32>) -> T {
         self.cells[self.pos_to_idx(pos)]
     }
 
+    /// Find the first occurence of a given element
     pub fn pos(&self, e: &T) -> Complex<i32> {
         let pos = self.cells.iter().position(|elem| elem == e).unwrap();
         self.idx_to_pos(pos)

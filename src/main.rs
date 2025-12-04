@@ -1,14 +1,15 @@
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 mod graph;
 mod grid;
 mod utils;
 use core::panic;
 use std::{env, time::Instant};
 
-const PART1_SOLS: &[fn(&str)] = &[day1::part1, day2::part1, day3::part1];
-const PART2_SOLS: &[fn(&str)] = &[day1::part2, day2::part2, day3::part2];
+const PART1_SOLS: &[fn(&str)] = &[day1::part1, day2::part1, day3::part1, day4::part1];
+const PART2_SOLS: &[fn(&str)] = &[day1::part2, day2::part2, day3::part2, day4::part2];
 
 fn main() {
     let args: Vec<String> = env::args().collect();
