@@ -1,7 +1,6 @@
-use std::collections::HashSet;
-
 use crate::utils::{parse_numbers, parse_numbers_no_split};
 
+// Switching from hashset to breaking in the if only divided runtime by 2
 pub fn part1(input: &str) {
     let input = input.replace('-', ";");
     let (ranges_str, ids_str) = input.split_once("\n\n").unwrap();
@@ -16,20 +15,19 @@ pub fn part1(input: &str) {
         })
         .collect();
     let ids = parse_numbers_no_split::<i64>(ids_str);
-    dbg!(&ranges);
-    dbg!(&ids);
-    let mut fresh = HashSet::new();
+    let mut count = 0;
     for id in ids {
         for &(low, high) in &ranges {
             if low <= id && id <= high {
-                fresh.insert(id);
+                count += 1;
+                break;
             }
         }
     }
-    let count = fresh.len();
     println!("{count}");
 }
 
+// To make this more efficient, sort ranges first then merge is O(n) instead of O(n^2)
 pub fn part2(input: &str) {
     let input = input.replace('-', ";");
     let (ranges_str, _) = input.split_once("\n\n").unwrap();
