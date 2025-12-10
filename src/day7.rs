@@ -33,6 +33,7 @@ pub fn part1(input: &str) {
     println!("{count}");
 }
 
+// there was a linear solution but hey I tunnelled
 pub fn part2(input: &str) {
     let grid = string_to_grid(input, Vec::new());
     let mut cache = HashMap::new();

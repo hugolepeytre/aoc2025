@@ -18,7 +18,7 @@ impl<T: Copy + Hash + Eq> Graph<T> {
             }
             let curr_dist = distances[&current];
             for &(n, cost) in self.edge_list[&current].iter() {
-                let dist = distances.entry(n).or_insert(i32::MAX);
+                let dist = distances.entry(n).or_insert(i64::MAX);
                 if curr_dist + cost < *dist {
                     *dist = curr_dist + cost;
                     // Minus because BinaryHeap is max heap. Old heuristic value will stay
@@ -38,7 +38,7 @@ impl<T: Copy + Hash + Eq> Graph<T> {
             let HNode(current, _) = unvisited.pop().unwrap();
             let curr_dist = distances[&current];
             for &(n, cost) in self.edge_list[&current].iter() {
-                let dist = distances.entry(n).or_insert(i32::MAX);
+                let dist = distances.entry(n).or_insert(i64::MAX);
                 if curr_dist + cost < *dist {
                     *dist = curr_dist + cost;
                     // Minus because BinaryHeap is max heap. Old node value will stay
@@ -85,7 +85,7 @@ impl<T: Copy + Hash + Eq> Graph<T> {
     }
 
     pub fn reverse(self) -> Graph<T> {
-        let mut new_edge_list: HashMap<T, Vec<(T, i32)>> = HashMap::new();
+        let mut new_edge_list: HashMap<T, Vec<(T, i64)>> = HashMap::new();
         for (node, neighbors) in self.edge_list {
             new_edge_list.entry(node).or_default();
             for (n, cost) in neighbors {
@@ -113,4 +113,4 @@ impl<T: Eq + PartialEq> PartialOrd for HNode<T> {
     }
 }
 
-type Cost = i32;
+type Cost = i64;

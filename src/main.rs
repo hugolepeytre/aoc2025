@@ -5,6 +5,8 @@ mod day4;
 mod day5;
 mod day6;
 mod day7;
+mod day8;
+mod day9;
 mod graph;
 mod grid;
 mod utils;
@@ -19,6 +21,8 @@ const PART1_SOLS: &[fn(&str)] = &[
     day5::part1,
     day6::part1,
     day7::part1,
+    day8::part1,
+    day9::part1,
 ];
 const PART2_SOLS: &[fn(&str)] = &[
     day1::part2,
@@ -28,6 +32,8 @@ const PART2_SOLS: &[fn(&str)] = &[
     day5::part2,
     day6::part2,
     day7::part2,
+    day8::part2,
+    day9::part2,
 ];
 
 fn main() {
