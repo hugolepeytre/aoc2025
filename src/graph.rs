@@ -17,7 +17,7 @@ impl<T: Copy + Hash + Eq> Graph<T> {
                 return distances[&current];
             }
             let curr_dist = distances[&current];
-            for &(n, cost) in self.edge_list[&current].iter() {
+            for &(n, cost) in &self.edge_list[&current] {
                 let dist = distances.entry(n).or_insert(i64::MAX);
                 if curr_dist + cost < *dist {
                     *dist = curr_dist + cost;
@@ -37,7 +37,7 @@ impl<T: Copy + Hash + Eq> Graph<T> {
         while !unvisited.is_empty() {
             let HNode(current, _) = unvisited.pop().unwrap();
             let curr_dist = distances[&current];
-            for &(n, cost) in self.edge_list[&current].iter() {
+            for &(n, cost) in &self.edge_list[&current] {
                 let dist = distances.entry(n).or_insert(i64::MAX);
                 if curr_dist + cost < *dist {
                     *dist = curr_dist + cost;
